@@ -7,8 +7,8 @@ name: Java CI
 
 # ---- KHI NAO pipeline nay duoc kich hoat? (trigger) ----
 on:
-  push                 # 1. moi lan co ai do push code len repo
-  pull_request         # 2. moi lan mo / cap nhat Pull Request
+  push:                # 1. moi lan co ai do push code len repo
+  pull_request:        # 2. moi lan mo / cap nhat Pull Request
   workflow_dispatch:   # 3. cho phep chay thu cong (nut "Run workflow")
 
 jobs:
