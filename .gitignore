@@ -1,0 +1,6 @@
+# San pham build - CI se tu build lai tu dau
+build/
+dist/
+
+# Cau hinh rieng cua may ca nhan (NetBeans)
+nbproject/private/

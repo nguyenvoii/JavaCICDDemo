@@ -1,0 +1,31 @@
+# ==========================================================
+# Pipeline CI cho JavaCICDDemo
+# File này nằm ngay trong repo -> pipeline cung la "code",
+# ca team doc duoc, sua duoc, luu lich su nhu code thuong
+# ==========================================================
+name: Java CI
+
+# ---- KHI NAO pipeline nay duoc kich hoat? (trigger) ----
+on:
+  push                 # 1. moi lan co ai do push code len repo
+  pull_request         # 2. moi lan mo / cap nhat Pull Request
+  workflow_dispatch:   # 3. cho phep chay thu cong (nut "Run workflow")
+
+jobs:
+  test:
+    runs-on: ubuntu-latest          # GitHub cap 1 may ao Linux moi tinh
+    steps:
+      - name: Tai code tu repo ve may ao (checkout)
+        uses: actions/checkout@v4
+
+      - name: Cai JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Cai Ant (kem JUnit task cho NetBeans project)
+        run: sudo apt-get update && sudo apt-get install -y ant ant-optional
+
+      - name: Bien dich va chay toan bo unit test
+        run: ant test
